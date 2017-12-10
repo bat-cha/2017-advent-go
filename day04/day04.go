@@ -47,7 +47,7 @@ func Part1Check(line string) bool {
 	for i := 0; i < l; i++ {
 		word := elements[i]
 		_, present := words[word]
-		if (present) {
+		if present {
 			return false
 		} else {
 			words[word] = empty{}
@@ -64,7 +64,7 @@ func Part2Check(line string) bool {
 	for i := 0; i < l; i++ {
 		word := SortString(elements[i])
 		_, present := words[word]
-		if (present) {
+		if present {
 			return false
 		} else {
 			words[word] = empty{}
