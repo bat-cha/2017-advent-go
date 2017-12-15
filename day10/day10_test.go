@@ -11,16 +11,16 @@ func TestPart1(t *testing.T) {
 
 func TestPart2(t *testing.T) {
 
-	if SolvePart2("test_input2.txt",256) != "a2582a3a0e66e6e86e3812dcb672a272" {
+	if SolvePart2("test_input2.txt") != "a2582a3a0e66e6e86e3812dcb672a272" {
 		t.Error("Failure")
 	}
-	if SolvePart2("test_input3.txt",256) != "33efeb34ea91902bb2f59c9920caa6cd" {
+	if SolvePart2("test_input3.txt") != "33efeb34ea91902bb2f59c9920caa6cd" {
 		t.Error("Failure")
 	}
-	if SolvePart2("test_input4.txt",256) != "3efbe78a8d82f29979031a4aa0b16a9d" {
+	if SolvePart2("test_input4.txt") != "3efbe78a8d82f29979031a4aa0b16a9d" {
 		t.Error("Failure")
 	}
-	if SolvePart2("test_input5.txt",256) != "63960835bcdc130f0b66d7ff4f6a5a8e" {
+	if SolvePart2("test_input5.txt") != "63960835bcdc130f0b66d7ff4f6a5a8e" {
 		t.Error("Failure")
 	}
 

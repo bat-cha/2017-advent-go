@@ -8,7 +8,7 @@ import (
 
 func Solve(filename string) {
 	SolvePart1(filename,256)
-	SolvePart2(filename,256)
+	SolvePart2(filename)
 }
 
 func SolvePart1(filename string, listSize int) int {
@@ -57,7 +57,7 @@ func SolvePart1(filename string, listSize int) int {
 	return result
 }
 
-func SolvePart2(filename string, listSize int) string {
+func SolvePart2(filename string) string {
 
 	var result string = ""
 
@@ -65,50 +65,8 @@ func SolvePart2(filename string, listSize int) string {
 
 	if e == nil {
 
-		list:= make([]int,listSize)
-
-		for i:=0; i< listSize; i++ {
-
-			list[i]=i
-		}
-
 		content := string(buf)
-
-		var L int = len(content)
-		suffix:=[5]int{17, 31, 73, 47, 23}
-
-		lengths := make([]int,L+5)
-		for l:=0; l<L; l++ {
-			lengths[l]=int(content[l])
-
-		}
-		for l:=0; l<5;l++ {
-			lengths[L+l]=suffix[l]
-		}
-
-		fmt.Println("input lengths" ,lengths)
-		fmt.Println("input list" ,list)
-		var currentPosition int = 0
-		var skipSize int = 0;
-		numRound:=64
-
-		for round:=0; round<numRound;round++ {
-			for l := 0; l < L+5; l++ {
-				//reverse the selected sublist
-				//fmt.Println("start", currentPosition, "end", currentPosition+lengths[l]-1, "end(%)", (currentPosition+lengths[l]-1)%listSize)
-				for i, j := currentPosition, currentPosition+lengths[l]-1; i < j; i, j = i+1, j-1 {
-					list[i%listSize], list[j%listSize] = list[j%listSize], list[i%listSize]
-
-				}
-				currentPosition += lengths[l] + skipSize
-				skipSize++
-			}
-		}
-		fmt.Println("sparse hash", list)
-		dense:=DenseHash(list)
-		fmt.Println("dense hash", dense)
-		result = ToHex(dense)
-		fmt.Println("Result in hex", result)
+		result = KnotHash(content)
 	}
 	return result
 }
@@ -135,3 +93,50 @@ func ToHex(denseHash []int) string {
 	return result
 }
 
+func KnotHash(content string) string {
+
+	listSize:=256
+	list:= make([]int,listSize)
+
+	for i:=0; i< listSize; i++ {
+
+		list[i]=i
+	}
+
+	var L int = len(content)
+	suffix:=[5]int{17, 31, 73, 47, 23}
+
+	lengths := make([]int,L+5)
+	for l:=0; l<L; l++ {
+		lengths[l]=int(content[l])
+
+	}
+	for l:=0; l<5;l++ {
+		lengths[L+l]=suffix[l]
+	}
+
+	//fmt.Println("input lengths" ,lengths)
+	//fmt.Println("input list" ,list)
+	var currentPosition int = 0
+	var skipSize int = 0;
+	numRound:=64
+
+	for round:=0; round<numRound;round++ {
+		for l := 0; l < L+5; l++ {
+			//reverse the selected sublist
+			//fmt.Println("start", currentPosition, "end", currentPosition+lengths[l]-1, "end(%)", (currentPosition+lengths[l]-1)%listSize)
+			for i, j := currentPosition, currentPosition+lengths[l]-1; i < j; i, j = i+1, j-1 {
+				list[i%listSize], list[j%listSize] = list[j%listSize], list[i%listSize]
+
+			}
+			currentPosition += lengths[l] + skipSize
+			skipSize++
+		}
+	}
+	//fmt.Println("sparse hash", list)
+	dense:=DenseHash(list)
+	//fmt.Println("dense hash", dense)
+	var result = ToHex(dense)
+	//fmt.Println("Result in hex", result)
+	return result
+}

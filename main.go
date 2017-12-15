@@ -9,6 +9,13 @@ import (
 	"./day06"
 	"./day07"
 	"./day08"
+	"./day09"
+	"./day10"
+	"./day11"
+	"./day12"
+	"./day13"
+	"./day14"
+	"./day15"
 
 	"bufio"
 	"os"
@@ -58,7 +65,20 @@ func main() {
 		day07.Solve(filename)
 	case 8:
 		day08.Solve(filename)
-
+	case 9:
+		day09.Solve(filename)
+	case 10:
+		day10.Solve(filename)
+	case 11:
+		day11.Solve(filename)
+	case 12:
+		day12.Solve(filename)
+	case 13:
+		day13.Solve(filename)
+	case 14:
+		day14.Solve(filename)
+	case 15:
+		day15.Solve(filename)
 	default:
 		fmt.Println("unknown puzzle")
 		os.Exit(1)
