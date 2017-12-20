@@ -19,6 +19,8 @@ import (
 	"./day16"
 	"./day17"
 	"./day18"
+	"./day19"
+	"./day20"
 
 	"bufio"
 	"os"
@@ -88,6 +90,10 @@ func main() {
 		day17.Solve(filename)
 	case 18:
 		day18.Solve(filename)
+	case 19:
+		day19.Solve(filename)
+	case 20:
+		day20.Solve(filename)
 	default:
 		fmt.Println("unknown puzzle")
 		os.Exit(1)
