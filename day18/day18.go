@@ -27,7 +27,7 @@ func SolvePart1(filename string) {
 	s, _, e := r.ReadLine()
 
 
-	instructions:=[]string{}
+	var instructions []string
 	for e == nil {
 		instructions=append(instructions,string(s))
 		s, _, e = r.ReadLine()

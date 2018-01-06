@@ -1,11 +1,12 @@
-package day18
+package day25
 import (
 	"testing"
 )
 
-
 func TestInput(t *testing.T) {
-	Solve("test_input.txt")
+	if Solve("test_input.txt") != 3 {
+		t.Error("Failed!")
+	}
 }
 
 func TestPuzzle(t *testing.T) {

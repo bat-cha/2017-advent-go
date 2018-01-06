@@ -1,11 +1,13 @@
-package day18
+package day21
 import (
 	"testing"
 )
 
 
 func TestInput(t *testing.T) {
-	Solve("test_input.txt")
+	if SolvePart("test_input.txt",2) != 12 {
+		t.Error("Failed")
+	}
 }
 
 func TestPuzzle(t *testing.T) {
